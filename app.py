@@ -1,10 +1,16 @@
 from flask import Flask
+import folium
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def hello_world():
-    return 'Hello, World!'
+    return "Hello, World!"
 
-if __name__ == '__main__':
+@app.route("/map")
+def show_map():
+    m = folium.Map()
+    return m.get_root().render()
+
+if __name__ == "__main__":
     app.run()
